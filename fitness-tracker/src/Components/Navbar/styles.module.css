@@ -1,0 +1,26 @@
+.nav {
+  background-color: #2E7D32; /* Dark green background */
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.nav li {
+  list-style: none;
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.nav a {
+  color: white; /* White text for contrast */
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid transparent; /* No border initially */
+  transition: border 0.3s ease, color 0.3s ease;
+}
+
+.nav a:hover {
+  border-bottom: 2px solid #66BB6A; /* Light green border on hover */
+}

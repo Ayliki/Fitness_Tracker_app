@@ -1,0 +1,71 @@
+.hero {
+  background: linear-gradient(135deg, #e8f5e9, #c8e6c9); 
+  padding: 4rem 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 1s ease-in-out;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.hero h3 {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #555; 
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 800px;
+}
+
+.statItem {
+  text-align: center;
+}
+
+.statItem h2 {
+  font-size: 2rem;
+  color: #333; 
+}
+
+.statItem p {
+  font-size: 1rem;
+  color: #777;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.ctaButton {
+  background-color: #4caf50;
+  color: white;
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow */
+}
+
+.ctaButton:hover {
+  background-color: #45a049;
+  transform: translateY(-3px); 
+}

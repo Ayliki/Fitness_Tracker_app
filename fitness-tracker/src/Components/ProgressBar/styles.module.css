@@ -1,0 +1,44 @@
+.progressBarContainer {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.progressBarContainer p {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #333; /* Dark gray text */
+  margin-bottom: 0.5rem;
+}
+
+.progressBar {
+  background-color: #ddd; /* Light background */
+  border-radius: 10px;
+  width: 100%;
+  max-width: 400px;
+  height: 2rem;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+.progress {
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.labelPlaceholder {
+  height: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.exceededLabel {
+  color: #66BB6A; /* Lighter green for exceeded goals */
+  font-weight: bold;
+}

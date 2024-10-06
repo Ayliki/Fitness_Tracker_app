@@ -1,0 +1,39 @@
+.activityLogContainer {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin: 2rem auto;
+    max-width: 800px;
+  }
+  
+  .activityLogContainer h3 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 2rem;
+  }
+  
+  .activityLogTable {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .activityLogTable th,
+  .activityLogTable td {
+    padding: 1rem;
+    border-bottom: 2px solid #eee;
+  }
+  
+  .activityLogTable th {
+    background-color: #2E7D32; /* Dark green header */
+    color: white;
+  }
+  
+  .activityLogTable tr:hover {
+    background-color: #E8F5E9; /* Light green on hover */
+  }
+  
+  .activityLogTable td {
+    color: #555;
+    font-size: 1.1rem;
+  }

@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Roboto:wght@400;500&display=swap');
+
+body {
+  background-color: #F7F9FC; /* Light gray-blue background */
+  font-family: 'Roboto', sans-serif;
+  color: #333; /* Dark gray text */
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4 {
+  color: #333; /* Dark headings */
+  font-weight: 600;
+}
+
+p {
+  color: #555; /* Softer gray for body text */
+}
+
+button {
+  background-color: #2E7D32; /* Dark green for buttons */
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #1B5E20; /* Darker green on hover */
+}
+
+a {
+  text-decoration: none; /* No underline */
+  color: #2E7D32; /* Dark green for links */
+  transition: border 0.3s ease;
+}
+
+a:hover {
+  border-bottom: 2px solid #2E7D32; /* Border on hover instead of underline */
+}
