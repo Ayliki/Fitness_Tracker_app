@@ -14,7 +14,7 @@ const withAuth = (WrappedComponent: ComponentType<any>) => {
         } catch (error) {
           console.error('Error checking authentication:', error);
         } finally {
-          setIsLoading(false); // Stop loading state regardless of result
+          setIsLoading(false); 
         }
       };
       checkAuth();
@@ -23,7 +23,7 @@ const withAuth = (WrappedComponent: ComponentType<any>) => {
     if (isLoading) {
       return (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-          <div className="spinner">Loading...</div> {/* Add spinner CSS or component */}
+          <div className="spinner">Loading...</div> 
         </div>
       );
     }

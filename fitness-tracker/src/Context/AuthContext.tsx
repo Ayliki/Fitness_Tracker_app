@@ -10,13 +10,11 @@ interface AuthContextType {
 }
 
 interface AuthProviderProps {
-  children: ReactNode;  // Here we define that the AuthProvider expects children
+  children: ReactNode;  
 }
 
-// Create the AuthContext
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-// Custom hook for consuming AuthContext
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
@@ -25,7 +23,6 @@ export const useAuth = () => {
   return context;
 };
 
-// AuthProvider component to wrap the app and provide auth state
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
@@ -36,7 +33,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       setLoading(false);
     });
 
-    return unsubscribe; // Clean up the listener on component unmount
+    return unsubscribe; 
   }, []);
 
   const logOut = async () => {
