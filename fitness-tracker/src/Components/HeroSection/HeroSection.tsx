@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { IDataPoint } from '../../interface';
 import cl from './styles.module.css';
 import { FaWalking, FaRoute, FaBurn } from 'react-icons/fa';
+import { useAuth } from '../../Context/AuthContext';
 
 interface IHeroProps {
     latestData: IDataPoint;
@@ -9,6 +10,7 @@ interface IHeroProps {
 
 const HeroSection = ({ latestData }: IHeroProps) => {
     const navigate = useNavigate();
+    const { currentUser } = useAuth();
 
     const handleViewStats = () => {
         navigate('/stats'); 
@@ -18,7 +20,7 @@ const HeroSection = ({ latestData }: IHeroProps) => {
         <div className={cl.hero}>
             <h1>Your Daily Overview</h1>
             <h3>Track your steps, distance, and calories burned today</h3>
-            <div className={cl.stats}>
+            <div className={`${cl.stats} ${!currentUser ? cl.blurred : ''}`}>
                 <div className={cl.statItem}>
                     <FaWalking size={24} />
                     <h2>{latestData.steps}</h2>
