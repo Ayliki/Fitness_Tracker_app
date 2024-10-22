@@ -1,33 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { logIn, logOut } from '../../firebaseAuth'; 
 import cl from './styles.module.css'; 
 import { useNavigate } from 'react-router-dom';
-import { auth } from '../../firebaseConfig'; // Import Firebase auth to get user details
+import { useDispatch, useSelector } from 'react-redux';
+import { AppState } from '../../store/index';
+import { login, logout } from '../../slices/userSlice';
 
 const Profile = () => {
-    const [email, setEmail] = useState<string>('');
-    const [password, setPassword] = useState<string>('');
-    const [isLoggedIn, setIsLoggedIn] = useState<boolean>(() => {
-        return localStorage.getItem('isLoggedIn') === 'true';
-    });
-    const [userEmail, setUserEmail] = useState<string | null>(null); // To display the user's email after login
-
+    const dispatch = useDispatch();
     const navigate = useNavigate(); 
 
-    // Fetch user email if logged in
-    useEffect(() => {
-        if (isLoggedIn && auth.currentUser) {
-            setUserEmail(auth.currentUser.email ?? null); // Ensure email is either a string or null
-        }
-    }, [isLoggedIn]);
+    const email = useSelector((state: AppState) => state.user.email);
+    const isLoggedIn = useSelector((state: AppState) => state.user.isLoggedIn);
+
+    const [userEmail, setUserEmail] = useState<string>(''); 
+    const [password, setPassword] = useState<string>('');
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            await logIn(email, password);
+            await logIn(userEmail, password);
             localStorage.setItem('isLoggedIn', 'true');
-            setIsLoggedIn(true);
-            setUserEmail(auth.currentUser?.email ?? null); // Set the email or null if undefined
+            dispatch(login(userEmail));
             alert('Logged in successfully');
             navigate('/'); 
         } catch (error) {
@@ -38,8 +32,7 @@ const Profile = () => {
     const handleLogout = async () => {
         await logOut();
         localStorage.removeItem('isLoggedIn');
-        setIsLoggedIn(false);
-        setUserEmail(null);
+        dispatch(logout())
         alert('Logged out successfully');
     };
 
@@ -47,7 +40,7 @@ const Profile = () => {
         return (
             <div className={cl.profileContainer}>
                 <h2 className={cl.heading}>Welcome to Your Profile</h2>
-                {userEmail && <p className={cl.userInfo}>Email: <strong>{userEmail}</strong></p>}
+                {userEmail && <p className={cl.userInfo}>Email: <strong>{email}</strong></p>}
                 <button className={cl.ctaButton} onClick={handleLogout}>Logout</button>
             </div>
         );
@@ -62,8 +55,8 @@ const Profile = () => {
                     <input
                         className={cl.input}
                         type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        value={userEmail}
+                        onChange={(e) => setUserEmail(e.target.value)}
                         required
                     />
                 </div>
