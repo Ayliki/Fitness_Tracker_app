@@ -8,6 +8,8 @@ import Profile from "./Components/Profile/Profile";
 import Registration from "./Components/Profile/Registration";
 import withAuth from './HOC/withAuth';
 import { AuthProvider } from "./Context/AuthContext";
+import { Provider } from "react-redux";
+import { store } from "./store/index";
 
 function App() {
 
@@ -29,30 +31,34 @@ function App() {
 
 
   return (
-    <AuthProvider>
-      <Navbar />
-      <Routes>
-        {/* Public Routes */}
-        <Route path="/" element={<MainPage data={sampleData} latestData={latestData} />} />
-        <Route path="/login" element={<Profile />} /> 
-        <Route path="/register" element={<Registration />} /> 
-        <Route path="/profile" element={<Profile />} /> 
+    <Provider store={store}>
+      <AuthProvider>
+        <Navbar />
+        <Routes>
+          {/* Public Routes */}
+          <Route path="/" element={<MainPage data={sampleData} latestData={latestData} />} />
+          <Route path="/login" element={<Profile />} />
+          <Route path="/register" element={<Registration />} />
+          <Route path="/profile" element={<Profile />} />
 
-        {/* Protected Routes */}
-        <Route 
-          path="/dashboard" 
-          element={<ProtectedDashboard data={sampleData} latestData={latestData} />} 
-        />
-        <Route 
-          path="/stats" 
-          element={<ProtectedStatsPage data={sampleData} latestData={latestData} />} 
-        />
-        <Route 
-          path="/activity-log" 
-          element={<ProtectedActivityLog activityData={sampleData} />} 
-        />
-      </Routes>
-    </AuthProvider>
+          {/* Protected Routes */}
+          <Route
+            path="/dashboard"
+            element={<ProtectedDashboard data={sampleData} latestData={latestData} />}
+          />
+          <Route
+            path="/stats"
+            element={<ProtectedStatsPage data={sampleData} latestData={latestData} />}
+          />
+          <Route
+            path="/activity-log"
+            element={<ProtectedActivityLog activityData={sampleData} />}
+          />
+        </Routes>
+      </AuthProvider>
+    </Provider>
+
+
   );
 }
 
